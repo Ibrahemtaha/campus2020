@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const Nav = () => {
+export default function Nav() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
         Navbar
       </a>
@@ -20,32 +21,24 @@ export const Nav = () => {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <Link class="nav-link" to="/">
               Home <span class="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Features
-            </a>
+            <Link class="nav-link" to="About">
+              About
+            </Link>
           </li>
+        </ul>
+        <ul className="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Pricing
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              Disabled
-            </a>
+            <Link class="nav-link" to="Login">
+              Login
+            </Link>
           </li>
         </ul>
       </div>
     </nav>
   );
-};
+}
