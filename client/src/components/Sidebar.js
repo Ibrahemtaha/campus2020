@@ -16,31 +16,31 @@ export default class Sidebar extends Component {
               to="#"
               className="list-group-item list-group-item-action bg-light "
             >
-              Dashboard
+              Teachers
             </Link>
             <Link
               to="#"
               className="list-group-item list-group-item-action bg-light"
             >
-              Shortcuts
+              Students
             </Link>
             <Link
               to="#"
               className="list-group-item list-group-item-action bg-light"
             >
-              Overview
+              Sepcialties
             </Link>
             <Link
               to="#"
               className="list-group-item list-group-item-action bg-light"
             >
-              Events
+              Courses
             </Link>
             <Link
               to="#"
               className="list-group-item list-group-item-action bg-light"
             >
-              Profile
+              Lessons
             </Link>
             <Link
               to="#"
