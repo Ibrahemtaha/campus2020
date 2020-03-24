@@ -6,52 +6,94 @@ import "./Sidebar.css";
 export default class Sidebar extends Component {
   render() {
     return (
-      <div className="d-flex" id="wrapper">
-        <div className="bg-light border-right" id="sidebar-wrapper">
-          <div className="sidebar-heading text-primary border border-primary">
-            <Link to="#">Admin Dashboard </Link>
+      <div>
+        <div className="row">
+          <div className="col-3">
+            <div
+              className="nav flex-column nav-tabs text-center"
+              id="v-tabs-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <a
+                href="#v-tabs-home"
+                className="nav-link active"
+                id="v-tabs-home-tab"
+                data-toggle="tab"
+                role="tab"
+              >
+                Teacher
+              </a>
+              <a
+                href="#v-tabs-about"
+                className="nav-link"
+                id="v-tabs-about-tab"
+                data-toggle="tab"
+                role="tab"
+              >
+                Students
+              </a>
+              <a
+                href="#v-tabs-contact"
+                className="nav-link"
+                id="v-tabs-contact-tab"
+                data-toggle="tab"
+                role="tab"
+              >
+                Specialties
+              </a>
+              <a
+                href="#v-tabs-any"
+                className="nav-link"
+                id="v-tabs-any-tab"
+                data-toggle="tab"
+                role="tab"
+              >
+                Courses
+              </a>
+              <a
+                href="#v-tabs-any"
+                className="nav-link"
+                id="v-tabs-lesson-tab"
+                data-toggle="tab"
+                role="tab"
+              >
+                Lessons
+              </a>
+            </div>
           </div>
-          <div className="list-group list-group-flush">
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light "
-            >
-              Teachers
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              Students
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              Sepcialties
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              Courses
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              Lessons
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              Status
-            </Link>
+          {/* Content */}
+          <div className="col-9 mt-1">
+            <div className="tab-content" id="v-tabs-tabContent">
+              <div
+                className="tab-pane fade show active"
+                id="v-tabs-home"
+                role="tabpanel"
+              >
+                Home Home Home Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Dolor ab, asperiores nesciunt ipsa voluptatum
+                explicabo hic nam odio expedita architecto illo adipisci
+                delectus ipsam, quod officiis iure eligendi vero tempore.
+              </div>
+              <div className="tab-pane fade" id="v-tabs-about" role="tabpanel">
+                about About About About
+              </div>
+              <div
+                className="tab-pane fade"
+                id="v-tabs-contact"
+                role="tabpanel"
+              >
+                contact Contact Contact Contact
+              </div>
+              <div className="tab-pane fade" id="v-tabs-any" role="tabpanel">
+                any Any Any Any
+              </div>
+              <div className="tab-pane fade" id="v-tabs-lesson" role="tabpanel">
+                LESSONS LESSONS
+              </div>
+            </div>
           </div>
         </div>
-
-        <div id="page-content-wrapper"></div>
       </div>
     );
   }
