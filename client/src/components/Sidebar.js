@@ -10,13 +10,13 @@ export default class Sidebar extends Component {
         <div className="row">
           <div className="col-3">
             <div
-              className="nav flex-column nav-tabs text-center"
+              className="nav flex-column nav-tabs text-center border border-primary w-75"
               id="v-tabs-tab"
               role="tablist"
               aria-orientation="vertical"
             >
               <a
-                href="#v-tabs-home"
+                href="#v-tabs-home "
                 className="nav-link active"
                 id="v-tabs-home-tab"
                 data-toggle="tab"
