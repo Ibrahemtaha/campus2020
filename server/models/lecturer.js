@@ -23,17 +23,17 @@ var lecturer = sequelize.define(
     email: {
       type: Sequelize.STRING,
       allowNull: false,
-      isEmail: true,
-      unique: true
-      // validate: {
-      //   isEmail: {
-      //     msg: "Must be a valid email address"
-      //   }
-      // }
+      unique: true,
+      validate: {
+        isEmail: true
+        //   isEmail: {
+        //     msg: "Must be a valid email address"
+        //   }
+      }
     },
     phone: {
-      //type: Sequelize.ARRAY(Sequelize.STRING),
-      type: Sequelize.STRING,
+      type: Sequelize.ARRAY(Sequelize.STRING),
+      //type: Sequelize.STRING,
       allowNull: false,
       validate: {
         len: [9, 10],

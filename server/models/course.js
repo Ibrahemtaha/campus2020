@@ -40,7 +40,7 @@ var course = sequelize.define(
 );
 
 //course.belongsTo(lecturer, { foreignKey: { name: "lecturer_id" } });
-//lecturer.belongsTo(course, { foreignKey: { name: "lecturer_id" } });
+//lecturer.belongsTo(course);
 
 module.exports = course;
 
