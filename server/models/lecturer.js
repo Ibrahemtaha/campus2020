@@ -8,7 +8,7 @@ sequelize.sync();
 var lecturer = sequelize.define(
   "lecturer",
   {
-    id: {
+    lecturer_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
