@@ -38,6 +38,6 @@ var course = sequelize.define(
   }
 );
 
-//course.belongsTo(lecturer);
+course.belongsTo(lecturer);
 
 module.exports = course;
