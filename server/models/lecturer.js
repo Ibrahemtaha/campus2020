@@ -1,11 +1,14 @@
 var Sequelize = require("sequelize");
 // importing connection database
 var sequelize = require("./db");
+//var user = require("./user");
+
+sequelize.sync();
 
 var lecturer = sequelize.define(
   "lecturer",
   {
-    lecturer_id: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -29,24 +32,25 @@ var lecturer = sequelize.define(
       // }
     },
     phone: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
+      //type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         len: [9, 10],
         not: ["[a-z]", "i"]
       }
-    },
-    user_id: {
-      type: Sequelize.INTEGER,
-      references: "user", // <<< Note, its table's name, not object name
-      referencesKey: "id" // <<< Note, its a column name
     }
+    // user_id: {
+    //   type: Sequelize.INTEGER,
+    //   references: "user", // <<< Note, its table's name, not object name
+    //   referencesKey: "id" // <<< Note, its a column name
+    // }
   },
   {
     timestamps: true
   }
 );
 
-lecturer.hasMany(user);
+//lecturer.hasMany(user);
 
 module.exports = lecturer;

@@ -1,6 +1,7 @@
 var Sequelize = require("sequelize");
 // importing connection database
 var sequelize = require("./db");
+//var lecturer = require("./lecturer");
 
 sequelize.sync();
 
@@ -26,18 +27,21 @@ var course = sequelize.define(
     file: {
       type: Sequelize.BLOB("long"),
       allowNull: true
-    },
-    lecturer_id: {
-      type: Sequelize.INTEGER,
-      references: "lecturer", // <<< Note, its table's name, not object name
-      referencesKey: "id" // <<< Note, its a column name
     }
+    // lecturer_id: {
+    //   type: Sequelize.INTEGER,
+    //   references: "lecturer", // <<< Note, its table's name, not object name
+    //   referencesKey: "id" // <<< Note, its a column name
+    // }
   },
   {
     timestamps: true
   }
 );
 
-course.belongsTo(lecturer);
+//course.belongsTo(lecturer, { foreignKey: { name: "lecturer_id" } });
+//lecturer.belongsTo(course, { foreignKey: { name: "lecturer_id" } });
 
 module.exports = course;
+
+//https://sequelize.org/master/manual/assocs.html
