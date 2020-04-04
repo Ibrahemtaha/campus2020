@@ -32,8 +32,8 @@ var lecturer = sequelize.define(
       }
     },
     phone: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
-      //type: Sequelize.STRING,
+      //type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         len: [9, 10],

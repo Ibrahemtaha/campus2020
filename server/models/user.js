@@ -20,13 +20,34 @@ var user = sequelize.define(
       }
     },
     role: {
-      type: Sequelize.STRING
+      type: Sequelize.ENUM,
+      values: ["admin", "teacher", "student"]
     },
-    hash: {
-      type: Sequelize.STRING
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+        //   isEmail: {
+        //     msg: "Must be a valid email address"
+        //   }
+      }
     },
-    salt: {
-      type: Sequelize.INTEGER
+    phone: {
+      //type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        len: [9, 10],
+        not: ["[a-z]", "i"]
+      }
+    },
+    password: {
+      type: Sequelize.STRING,
+      validate: {
+        len: [5, 50]
+      }
     }
   },
   {

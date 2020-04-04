@@ -38,14 +38,14 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/course", coursesRouter);
 
-sequelize
-  .sync()
-  .then(reslut => {
-    //console.log(reslut);
-    app.listen(8080);
-  })
-  .catch(error => {
-    //console.log(error);
-  });
+// sequelize
+//   .sync()
+//   .then(reslut => {
+//     //console.log(reslut);
+//     app.listen(8080);
+//   })
+//   .catch(error => {
+//     //console.log(error);
+//   });
 
 module.exports = app;

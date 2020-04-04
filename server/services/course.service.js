@@ -1,4 +1,6 @@
 var Course = require("../models/course");
+var Lecturer = require("../models/lecturer");
+var user = require("../models/user");
 
 exports.getCourses = async function() {
   const query = {

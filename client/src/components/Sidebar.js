@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChalkboard,
+  faChessKing,
+  faAddressBook
+} from "@fortawesome/free-solid-svg-icons";
+import CreateCourse from "./CreateCourse";
 
 import "./Sidebar.css";
+//import { createCourse } from "../../../server/services/course.service";
 
 export default class Sidebar extends Component {
   render() {
@@ -22,7 +30,9 @@ export default class Sidebar extends Component {
                 data-toggle="tab"
                 role="tab"
               >
-                Teacher
+                {" "}
+                <FontAwesomeIcon icon={faAddressBook} className="mr-2" />
+                Users
               </a>
               <a
                 href="#v-tabs-about"
@@ -31,7 +41,9 @@ export default class Sidebar extends Component {
                 data-toggle="tab"
                 role="tab"
               >
-                Students
+                {" "}
+                <FontAwesomeIcon icon={faChalkboard} className="mr-2" />
+                Courses
               </a>
               <a
                 href="#v-tabs-contact"
@@ -40,6 +52,8 @@ export default class Sidebar extends Component {
                 data-toggle="tab"
                 role="tab"
               >
+                {" "}
+                <FontAwesomeIcon icon={faChessKing} className="mr-2" />
                 Specialties
               </a>
               <a
@@ -49,7 +63,7 @@ export default class Sidebar extends Component {
                 data-toggle="tab"
                 role="tab"
               >
-                Courses
+                Flow
               </a>
               <a
                 href="#v-tabs-any"
@@ -58,7 +72,7 @@ export default class Sidebar extends Component {
                 data-toggle="tab"
                 role="tab"
               >
-                Lessons
+                Calendar
               </a>
             </div>
           </div>
@@ -76,7 +90,7 @@ export default class Sidebar extends Component {
                 delectus ipsam, quod officiis iure eligendi vero tempore.
               </div>
               <div className="tab-pane fade" id="v-tabs-about" role="tabpanel">
-                about About About About
+                <CreateCourse />
               </div>
               <div
                 className="tab-pane fade"

@@ -1,9 +1,9 @@
 var Sequelize = require("sequelize");
 // importing connection database
 var sequelize = require("./db");
-//var lecturer = require("./lecturer");
+var lecturer = require("./lecturer");
 
-sequelize.sync();
+//sequelize.sync();
 
 var course = sequelize.define(
   "course",
@@ -39,6 +39,8 @@ var course = sequelize.define(
   }
 );
 
+course.hasMany(lecturer, { foreignKey: "lecturer_id" }); /// metda data==>
+lecturer.belongsTo(course, { foreignKey: { name: "course_id" } });
 //course.belongsTo(lecturer, { foreignKey: { name: "lecturer_id" } });
 //lecturer.belongsTo(course);
 
