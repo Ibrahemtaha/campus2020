@@ -8,14 +8,14 @@ var Course = require("../models/course");
 sequelize.sync();
 
 exports.create = async function(req, res) {
-  const { name, hours } = req.body;
+  const { name, hours, file } = req.body;
   if (!name || !hours) {
     return res.status(400).json({
       error: "title and user and content is requred"
     });
   }
   try {
-    var course = await CourseService.createCourse({ name, hours });
+    var course = await CourseService.createCourse({ name, hours, file });
     return res.status(200).json({
       status: 201,
       data: course,

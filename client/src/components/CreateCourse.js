@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./Nav";
 
@@ -33,6 +33,21 @@ function CreateCourse({ history }) {
       alert(error);
     }
   };
+  // Display section
+  const [courses, setCourses] = useState([]);
+
+  const fetchCourses = async () => {
+      try {
+          const response = await axios.get(`http://localhost:3000/course/courses`);
+          setCourses(response.data.data);
+      } catch (error) {
+          console.log(error);
+      }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   return (
     <div className="container py-2">
@@ -71,14 +86,59 @@ function CreateCourse({ history }) {
             type="file"
             className="form-control"
             placeholder="Post Content"
-            cols="20"
-            rows="5"
           />
         </div>
         <button className="btn btn-primary">Create</button>
       </form>
-    </div>
+    
+    {/* table START */}
+  
+    <h1>Mern Stack!!!!</h1>
+    <hr/>
+    {/* {JSON.stringify(posts)} */}
+    {courses.map((course, i) => (
+        <div
+            className="row"
+            key={course.course_id}
+            style={{border: "1px solid silver"}}
+        >
+            <div className="col pt-3 pb-2">
+                <div className="row">
+                    <div className="col-md-10">
+                        <Link to={`/post/${course.course_id}`}>
+                            <h2>{course.title}</h2>
+                        </Link>
+                        <p className="lead">{course.content.substring(0, 100)}</p>
+                        <p>
+                            Author{" "}
+                            <span className="badge">
+            {course.user} Published on{" "}
+                                <span className="badge">
+              {new Date(course.createdAt).toLocaleString()}
+            </span>
+          </span>
+                        </p>
+                    </div>
+                    <div className="col-md-2">
+                        <Link
+                            to={`/post/update/${course.course_id}`}
+                            className="btn btn-sm btn-outline-warning"
+                        >
+                            Update
+                        </Link>
+                        <button
+                            onClick={() => deleteConfirm(course.course_id)}
+                            className="btn btn-sm btn-outline-danger ml-1"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      ))}
+</div>
   );
-}
+
 
 export default CreateCourse;
