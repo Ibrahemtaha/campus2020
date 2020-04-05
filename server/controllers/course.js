@@ -1,5 +1,5 @@
 var CourseService = require("../services/course.service");
-
+const fs = require("fs");
 const controllers = {};
 
 var sequelize = require("../models/db");
@@ -7,11 +7,14 @@ var Course = require("../models/course");
 
 sequelize.sync();
 
-exports.create = async function(req, res) {
-  const { name, hours, file } = req.body;
+exports.create = async function (req, res) {
+  const { name, hours } = req.body;
+  // this line is important req.file.buffer will retrieve the data from file which will make it able to save byte data into mysql.
+  // that's it..
+  const file = req.file.buffer;
   if (!name || !hours) {
     return res.status(400).json({
-      error: "title and user and content is requred"
+      error: "title and user and content is requred",
     });
   }
   try {
@@ -19,14 +22,14 @@ exports.create = async function(req, res) {
     return res.status(200).json({
       status: 201,
       data: course,
-      message: "SuccessFully post created"
+      message: "SuccessFully post created",
     });
   } catch (e) {
     return res.status(400).json({ status: 400, message: e.message });
   }
 };
 
-exports.list = async function(req, res, next) {
+exports.list = async function (req, res, next) {
   // 201 -- when new object created
   // 404 --- not found
   // 200 --- it's ok
@@ -37,28 +40,28 @@ exports.list = async function(req, res, next) {
     return res.status(200).json({
       status: 200,
       data: courses,
-      message: "SuccessFully course Retrived"
+      message: "SuccessFully course Retrived",
     });
   } catch (e) {
     return res.status(400).json({ status: 400, message: e.message });
   }
 };
 
-exports.read = async function(req, res, next) {
+exports.read = async function (req, res, next) {
   const { id } = req.params;
   try {
     const course = await CourseService.readCourse(id);
     return res.status(200).json({
       status: 200,
       data: course,
-      message: "Successfully retrieved singe course"
+      message: "Successfully retrieved singe course",
     });
   } catch (e) {
     return res.status(400).json({ status: 400, message: e.message });
   }
 };
 
-exports.update = async function(req, res, next) {
+exports.update = async function (req, res, next) {
   const { id } = req.params;
   const { title, user } = req.body;
   console.log(title, user);
@@ -67,21 +70,21 @@ exports.update = async function(req, res, next) {
     return res.status(200).json({
       status: 200,
       data: result,
-      message: `Successfully updated with id ${id}`
+      message: `Successfully updated with id ${id}`,
     });
   } catch (e) {
     return res.status(400).json({ status: 400, message: e.message });
   }
 };
 
-exports.remove = async function(req, res, next) {
+exports.remove = async function (req, res, next) {
   const { id } = req.params;
   try {
     const course = await CourseService.delete(id);
     return res.status(200).json({
       status: 200,
       data: course,
-      message: `Successfully deleted with id ${id}`
+      message: `Successfully deleted with id ${id}`,
     });
   } catch (e) {
     return res.status(400).json({ status: 400, message: e.message });
