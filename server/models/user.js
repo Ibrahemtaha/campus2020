@@ -10,29 +10,37 @@ var user = sequelize.define(
     user_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    user_name: {
+    first_name: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        len: [0, 50]
-      }
+        len: [3, 25],
+      },
     },
+    last_name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 25],
+      },
+    },
+
     role: {
       type: Sequelize.ENUM,
-      values: ["admin", "teacher", "student"]
+      values: ["admin", "teacher", "student"],
     },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
+        isEmail: true,
         //   isEmail: {
         //     msg: "Must be a valid email address"
         //   }
-      }
+      },
     },
     phone: {
       //type: Sequelize.ARRAY(Sequelize.STRING),
@@ -40,18 +48,23 @@ var user = sequelize.define(
       allowNull: false,
       validate: {
         len: [9, 10],
-        not: ["[a-z]", "i"]
-      }
+        not: ["[a-z]", "i"],
+      },
     },
     password: {
       type: Sequelize.STRING,
       validate: {
-        len: [5, 50]
-      }
-    }
+        len: [6, 50],
+        is: {
+          args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/,
+          msg:
+            "The password must contain atleast 6 characters including at least 1 uppercase, 1 lowercase and one digit.",
+        },
+      },
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

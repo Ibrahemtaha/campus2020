@@ -1,11 +1,10 @@
 var Course = require("../models/course");
 var Lecturer = require("../models/lecturer");
-var user = require("../models/user");
 
-exports.getCourses = async function() {
+exports.getCourses = async function () {
   const query = {
     limit: 10,
-    order: [["createdAt", "DESC"]]
+    order: [["createdAt", "DESC"]],
   };
 
   try {
@@ -15,7 +14,7 @@ exports.getCourses = async function() {
   }
 };
 
-exports.createCourse = async function(entity) {
+exports.createCourse = async function (entity) {
   try {
     return await Course.create(entity);
   } catch (error) {
@@ -25,7 +24,7 @@ exports.createCourse = async function(entity) {
   }
 };
 
-exports.readCourse = async function(id) {
+exports.readCourse = async function (id) {
   try {
     return await Course.findOne({ where: { course_id: id } });
   } catch (e) {
@@ -33,12 +32,12 @@ exports.readCourse = async function(id) {
   }
 };
 
-exports.updateCourse = async function(entity, id) {
+exports.updateCourse = async function (entity, id) {
   try {
     return await Course.update(entity, {
       where: {
-        course_id: id
-      }
+        course_id: id,
+      },
     });
   } catch (err) {
     if (err) {
@@ -47,12 +46,12 @@ exports.updateCourse = async function(entity, id) {
   }
 };
 
-exports.delete = async function(id) {
+exports.delete = async function (id) {
   try {
     return await Course.destroy({
       where: {
-        course_id: id
-      }
+        course_id: id,
+      },
     });
   } catch (e) {
     throw Error("Error while deleting course with id:" + id);
