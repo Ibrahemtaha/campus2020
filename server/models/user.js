@@ -10,6 +10,7 @@ var user = sequelize.define(
     user_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
+      //unique: true,
       // autoIncrement: true,
       autoIncrementIdentity: true,
     },
@@ -59,7 +60,7 @@ var user = sequelize.define(
         is: {
           args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/,
           msg:
-            "The password must contain atleast 6 characters including at least 1 uppercase, 1 lowercase and one digit.",
+            "The password must contain atleast 6 characters including at least 1 uppercase, 1 lowercase and 1 digit, 1 symbol.",
         },
       },
     },

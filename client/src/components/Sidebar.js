@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChalkboard,
   faChessKing,
-  faAddressBook
+  faAddressBook,
 } from "@fortawesome/free-solid-svg-icons";
 import CreateCourse from "./CreateCourse";
+import CreateUser from "./CreateUser";
 
 import "./Sidebar.css";
 //import { createCourse } from "../../../server/services/course.service";
@@ -84,10 +85,7 @@ export default class Sidebar extends Component {
                 id="v-tabs-home"
                 role="tabpanel"
               >
-                Home Home Home Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Dolor ab, asperiores nesciunt ipsa voluptatum
-                explicabo hic nam odio expedita architecto illo adipisci
-                delectus ipsam, quod officiis iure eligendi vero tempore.
+                <CreateUser />
               </div>
               <div className="tab-pane fade" id="v-tabs-about" role="tabpanel">
                 <CreateCourse />
