@@ -8,7 +8,14 @@ var sequelize = require("../models/db");
 sequelize.sync();
 
 exports.create = async function (req, res) {
-  const { first_name, last_name, role, email, phone, password } = req.body;
+  const {
+    firstName: first_name,
+    lastName: last_name,
+    role,
+    email,
+    phone,
+    password,
+  } = req.body;
 
   if (!first_name || !last_name || !role || !email || !phone || !password) {
     return res.status(400).json({

@@ -43,7 +43,7 @@ export default function CreateUser({ history }) {
         phone: "",
         password: "",
       });
-      history.push("/");
+      //history.push("/");
     } catch (error) {
       alert(error);
     }
