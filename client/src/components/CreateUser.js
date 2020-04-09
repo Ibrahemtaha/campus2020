@@ -99,15 +99,12 @@ export default function CreateUser({ history }) {
         <div className="row">
           <div className="form-group col">
             <label className="text-muted">Role</label>
-            {/*             
-              type="text"
-              className="form-control"
-            */}
             <select
               onChange={handleChange("role")}
               value={role}
               required
               placeholder="Role"
+              className="form-control"
               class="custom-select"
             >
               <option value="" selected>

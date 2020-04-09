@@ -55,14 +55,14 @@ var user = sequelize.define(
     },
     password: {
       type: Sequelize.STRING,
-      validate: {
-        len: [6, 50],
-        is: {
-          args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/,
-          msg:
-            "The password must contain atleast 6 characters including at least 1 uppercase, 1 lowercase and 1 digit, 1 symbol.",
-        },
-      },
+      // validate: {
+      //   len: [6, 50],
+      //   is: {
+      //     args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/,
+      //     msg:
+      //       "The password must contain atleast 6 characters including at least 1 uppercase, 1 lowercase and 1 digit, 1 symbol.",
+      //   },
+      // },
     },
   },
   {

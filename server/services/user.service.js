@@ -1,4 +1,5 @@
 var User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
 //List all users
 exports.getUsers = async function () {
@@ -15,14 +16,34 @@ exports.getUsers = async function () {
 };
 
 exports.createUser = async function (entity) {
+  const { email, password } = entity;
+  const user = await User.findOne({ where: { email: email } });
+  if (user) {
+    throw Error("Email Already Exist");
+  }
+
   try {
-    return await User.create(entity);
+    const hash = bcrypt.hashSync(password, 10);
+    console.log(hash);
+    await User.create({ ...entity, password: hash });
+    //
   } catch (error) {
     if (error) {
+      console.log(error);
       throw Error("Error when creating user");
     }
   }
 };
+
+// exports.createUser = async function (entity) {
+//   try {
+//     return await User.create(entity);
+//   } catch (error) {
+//     if (error) {
+//       throw Error("Error when creating user");
+//     }
+//   }
+// };
 
 exports.readUser = async function (id) {
   try {
