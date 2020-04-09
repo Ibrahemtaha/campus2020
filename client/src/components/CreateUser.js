@@ -100,13 +100,19 @@ export default function CreateUser({ history }) {
           <div className="form-group col">
             <label className="text-muted">Role</label>
             {/*             
-              onChange={handleChange("role")}
-              value={role}
               type="text"
               className="form-control"
             */}
-            <select required placeholder="Role" class="custom-select">
-              <option selected>Choose a Role</option>
+            <select
+              onChange={handleChange("role")}
+              value={role}
+              required
+              placeholder="Role"
+              class="custom-select"
+            >
+              <option value="" selected>
+                Choose a Role
+              </option>
               <option value="admin">Admin</option>
               <option value="teacher">Teacher</option>
               <option value="student">Student</option>
@@ -148,7 +154,7 @@ export default function CreateUser({ history }) {
               required
             />
             <p>
-              Password must contain at least 6 characters, including at least: 1
+              Password must contain at least 6 characters: including at least: 1
               Uppercase, 1 Lowercase, 1 Digit, 1 Symbol.
             </p>
           </div>
@@ -161,32 +167,32 @@ export default function CreateUser({ history }) {
       <h1>Mern Stack!!!!</h1>
       <hr />
       {/* {JSON.stringify(posts)} */}
-      {users.map((course, i) => (
+      {users.map((user, i) => (
         <div
           className="row"
-          key={course.course_id}
+          key={user.user_id}
           style={{ border: "1px solid silver" }}
         >
           <div className="col pt-3 pb-2">
             <div className="row">
               <div className="col-md-10">
-                <Link to={`/post/${course.course_id}`}>
-                  <h2>{course.title}</h2>
+                <Link to={`/user/${user.user_id}`}>
+                  <h2>{user.firstName}</h2>
                 </Link>
                 {/* <p className="lead">{course.content.substring(0, 100)}</p> */}
                 <p>
                   Author{" "}
                   <span className="badge">
-                    {course.user} Published on{" "}
+                    {user.user} Published on{" "}
                     <span className="badge">
-                      {new Date(course.createdAt).toLocaleString()}
+                      {new Date(user.createdAt).toLocaleString()}
                     </span>
                   </span>
                 </p>
               </div>
               <div className="col-md-2">
                 <Link
-                  to={`/post/update/${course.course_id}`}
+                  to={`/post/update/${user.user_id}`}
                   className="btn btn-sm btn-outline-warning"
                 >
                   Update
