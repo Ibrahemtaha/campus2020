@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 //import Nav from "./Nav";
 import { Link } from "react-router-dom";
+import UserTable from "../components/user/UserTable";
 
 export default function CreateUser({ history }) {
   //state
@@ -44,6 +45,7 @@ export default function CreateUser({ history }) {
         password: "",
       });
       //history.push("/");
+      fetchUsers().then();
     } catch (error) {
       alert(error);
     }
@@ -160,51 +162,11 @@ export default function CreateUser({ history }) {
       </form>
 
       {/* table START */}
-
-      <h1>Mern Stack!!!!</h1>
+      <br />
+      <h1>User Table</h1>
       <hr />
       {/* {JSON.stringify(posts)} */}
-      {users.map((user, i) => (
-        <div
-          className="row"
-          key={user.user_id}
-          style={{ border: "1px solid silver" }}
-        >
-          <div className="col pt-3 pb-2">
-            <div className="row">
-              <div className="col-md-10">
-                <Link to={`/user/${user.user_id}`}>
-                  <h2>{user.firstName}</h2>
-                </Link>
-                {/* <p className="lead">{course.content.substring(0, 100)}</p> */}
-                <p>
-                  Author{" "}
-                  <span className="badge">
-                    {user.user} Published on{" "}
-                    <span className="badge">
-                      {new Date(user.createdAt).toLocaleString()}
-                    </span>
-                  </span>
-                </p>
-              </div>
-              <div className="col-md-2">
-                <Link
-                  to={`/post/update/${user.user_id}`}
-                  className="btn btn-sm btn-outline-warning"
-                >
-                  Update
-                </Link>
-                {/* <button
-                  onClick={() => deleteConfirm(course.course_id)}
-                  className="btn btn-sm btn-outline-danger ml-1"
-                >
-                  Delete
-                </button> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+      <UserTable users={users} />
     </div>
   );
 }

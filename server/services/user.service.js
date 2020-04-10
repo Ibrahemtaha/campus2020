@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 //List all users
 exports.getUsers = async function () {
   const query = {
-    limit: 10,
+    //limit: 10,
     order: [["createdAt", "DESC"]],
   };
 
