@@ -8,6 +8,8 @@ const mysql = require("mysql2");
 const sequelize = require("./models/db");
 require("dotenv").config();
 
+const passPortConf = require("./passport");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var userRouter = require("./routes/user");

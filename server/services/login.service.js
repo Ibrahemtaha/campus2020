@@ -1,21 +1,20 @@
-var Login = require("../models/user");
+const Login = require("../models/user");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const { JWT_SECRET } = require("../config");
 
-exports.createLogin = async function (entity) {
-  const { email, password } = entity; // is that needed, Mash?
-  const user = await Login.findOne({ where: { email: email } });
-  if (user) {
-    //throw Error("Email Already Exist");
-  }
-
-  try {
-    // const hash = bcrypt.hashSync(password, 10);
-    // console.log(hash);
-    // await User.create({ ...entity, password: hash });
-  } catch (error) {
-    // if (error) {
-    //   console.log(error);
-    //   throw Error("Error when creating user");
-    // }
-  }
+exports.generateToken = async function (user) {
+  const { user_id, phone, email, role, first_name, last_name } = user;
+  return jwt.sign(
+    {
+      user_id,
+      phone,
+      email,
+      role,
+      firstName: first_name,
+      lastName: last_name,
+    },
+    JWT_SECRET,
+    { expiresIn: "60m" }
+  );
 };
